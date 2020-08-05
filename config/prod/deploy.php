@@ -36,8 +36,8 @@ return new class extends DefaultDeployer
 
     public function beforePublishing()
     {
-        $this->runRemote('chown www:www {{ deploy_dir }}/shared/public/uploads');
-        $this->runRemote('chmod 777 {{ deploy_dir }}/shared/public/uploads');
+//        $this->runRemote('chown www:www {{ deploy_dir }}/shared/public/uploads');
+//        $this->runRemote('chmod 777 {{ deploy_dir }}/shared/public/uploads');
         $this->runRemote('chown -R www:www  {{ project_dir }}/var/cache');
         $this->runRemote('chown -R www:www  {{ project_dir }}/var/log');
         $this->runRemote('chmod -R 777 {{ project_dir }}/var/cache');
