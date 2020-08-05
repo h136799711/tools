@@ -12,7 +12,7 @@ return new class extends DefaultDeployer
             // SSH connection string to connect to the remote server (format: user@host-or-IP:port-number)
             ->server('root@www.hebidu.cn:22')
             // the absolute path of the remote server directory where the project is deployed
-            ->deployDir('/home/repo/helpt')
+            ->deployDir('/home/repo/help')
             // the URL of the Git repository where the project code is hosted
             ->repositoryUrl('git@h1367github:h136799711/tools.git')
             // the repository branch to deploy
