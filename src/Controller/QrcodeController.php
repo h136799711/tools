@@ -12,12 +12,11 @@ use Symfony\Component\HttpFoundation\Response;
 class QrcodeController extends AbstractController
 {
     /**
-     * @Route("/qrcode/{size<\d+>?}/{content}", name="web_qrcode")
      * @param $content
      * @param $size
-     * @return \by\infrastructure\base\CallResult|string
+     * @return Response
      */
-    public function create($content, $size)
+    public function index($content, $size)
     {
         $qrCode = new QrCode(urldecode($content));
         if ($size > 800) $size = 800;
