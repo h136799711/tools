@@ -14,11 +14,11 @@ return new class extends DefaultDeployer
             // the absolute path of the remote server directory where the project is deployed
             ->deployDir('/home/repo/helpt')
             // the URL of the Git repository where the project code is hosted
-            ->repositoryUrl('https://github.com/h136799711/tools.git')
+            ->repositoryUrl('git@h1367github:h136799711/tools.git')
             // the repository branch to deploy
             ->repositoryBranch('master')
             ->symfonyEnvironment($this->env)
-            ->sharedFilesAndDirs(['public/uploads']);
+            ->sharedFilesAndDirs();
     }
 
     // run some local or remote commands before the deployment is started
