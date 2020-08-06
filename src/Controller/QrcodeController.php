@@ -18,7 +18,11 @@ class QrcodeController extends AbstractController
      */
     public function index($content, $size)
     {
-        $qrCode = new QrCode(urldecode($content));
+        $content = urldecode($content);
+        if (empty($content)) {
+            return new Response("error content");
+        }
+        $qrCode = new QrCode($content);
         if ($size > 800) $size = 800;
         if ($size < 60) $size = 60;
         $qrCode->setSize($size);
