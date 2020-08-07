@@ -1,5 +1,5 @@
 qrcode_index:
-    path: /qrcode/{size<\d+>?}/{content}/
+    path: /qrcode/{size<\d+>?}/{type}/{content}
     controller: App\Controller\QrcodeController::index
     requirements:
         content: .+

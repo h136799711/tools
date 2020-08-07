@@ -16,7 +16,7 @@ class QrcodeController extends AbstractController
      * @param $size
      * @return Response
      */
-    public function index($content, $size)
+    public function index($content, $size, $type)
     {
         $content = urldecode($content);
         if (empty($content)) {
@@ -31,6 +31,10 @@ class QrcodeController extends AbstractController
         $qrCode->setEncoding('UTF-8');
         $qrCode->setErrorCorrectionLevel(new ErrorCorrectionLevel(ErrorCorrectionLevel::HIGH));
 
-        return new Response($qrCode->writeString(), 200, ['Content-Type'=>'image/png']);
+        if ($type == 'base64') {
+            return new Response($qrCode->writeDataUri(), 200);
+        } else {
+            return new Response($qrCode->writeString(), 200, ['Content-Type' => 'image/png']);
+        }
     }
 }
