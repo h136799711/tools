@@ -10,22 +10,24 @@ use by\infrastructure\helper\CallResultHelper;
 class IpAmap
 {
     protected $key;
+    protected $secret;
 
-    public function __construct($key)
+    public function __construct($key, $secret)
     {
         $this->key = $key;
+        $this->secret = $secret;
     }
 
     public function get($ip)
     {
         $url = 'https://restapi.amap.com/v3/ip?';
         $params = [
+            'key' => $this->key,
             'ip' => $ip,
-            'output' => "json",
+            'output' => "JSON",
         ];
-        $sign = $this->sign($params, $this->key);
+        $sign = $this->sign($params, $this->secret);
         $params['sig'] = $sign;
-        $params['key'] = $this->key;
         $url .= http_build_query($params);
 
         $resp = HttpRequest::newSession()->get($url);
@@ -51,7 +53,7 @@ class IpAmap
         return CallResultHelper::fail("未知错误");
     }
 
-    public function sign($params, $key)
+    public function sign($params, $secret)
     {
         ksort($params, SORT_ASC);
         $sign = "";
@@ -61,7 +63,7 @@ class IpAmap
             }
             $sign .= $k.'='.$v;
         }
-        $sign .= $key;
+        $sign .= $secret;
         return md5($sign);
     }
 }

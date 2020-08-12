@@ -23,7 +23,7 @@ class IpController extends AbstractController
             return new JsonResponse(Object2DataArrayHelper::getDataArrayFrom(CallResultHelper::fail("ip缺失")));
         }
 
-        $ret = (new IpAmap(ByEnv::get("AMQP_KEY")))->get($ip);
+        $ret = (new IpAmap(ByEnv::get("AMAP_KEY"), ByEnv::get("AMAP_SECRET")))->get($ip);
 
         return new JsonResponse(Object2DataArrayHelper::getDataArrayFrom($ret));
     }
