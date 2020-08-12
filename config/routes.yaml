@@ -3,3 +3,6 @@ qrcode_index:
     controller: App\Controller\QrcodeController::index
     requirements:
         content: .+
+ip_index:
+    path: /ip/{ip}
+    controller: App\Controller\IpController::index
