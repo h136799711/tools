@@ -1,13 +1,13 @@
 <?php
 
 
-namespace App\third\amqp;
+namespace App\third\amap;
 
 
 use by\component\http\HttpRequest;
 use by\infrastructure\helper\CallResultHelper;
 
-class IpAmqp
+class IpAmap
 {
     protected $key;
 
@@ -24,7 +24,7 @@ class IpAmqp
             'output' => "json",
         ];
         $sign = $this->sign($params, $this->key);
-        $params['sign'] = $sign;
+        $params['sig'] = $sign;
         $params['key'] = $this->key;
         $url .= http_build_query($params);
 
