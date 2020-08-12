@@ -7,7 +7,6 @@ use by\infrastructure\helper\Object2DataArrayHelper;
 use Dbh\SfCoreBundle\Common\ByEnv;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class IpController extends AbstractController
