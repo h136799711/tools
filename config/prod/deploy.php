@@ -42,7 +42,6 @@ return new class extends DefaultDeployer
         $this->runRemote('chown -R www:www  {{ project_dir }}/var/log');
         $this->runRemote('chmod -R 777 {{ project_dir }}/var/cache');
         $this->runRemote('chmod -R 777 {{ project_dir }}/var/log');
-        $this->runRemote('composer dump-env '.$this->env);
     }
 
 //    public function beforeUpdating()
