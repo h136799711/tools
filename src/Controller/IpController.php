@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\third\amap\IpAmap;
+use by\infrastructure\helper\CallResultHelper;
 use by\infrastructure\helper\Object2DataArrayHelper;
 use Dbh\SfCoreBundle\Common\ByEnv;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,7 +20,7 @@ class IpController extends AbstractController
     public function index($ip)
     {
         if (empty($ip)) {
-            return new JsonResponse("ip缺失");
+            return new JsonResponse(Object2DataArrayHelper::getDataArrayFrom(CallResultHelper::fail("ip缺失")));
         }
 
         $ret = (new IpAmap(ByEnv::get("AMQP_KEY")))->get($ip);
